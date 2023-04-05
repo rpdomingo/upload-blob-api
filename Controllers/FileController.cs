@@ -23,8 +23,17 @@ namespace blobupload.api.Controllers
         [Route("upload")]
         public async Task<IActionResult> Upload([FromForm] FileModels file)
         {
-            await  _fileService.Upload(file);
-            return Ok("Success");
+            try
+            {
+                await  _fileService.Upload(file);
+                Ok("Success");
+            }
+            catch (System.Exception ex)
+            {
+                 throw ex;
+            }
+            
+            return BadRequest();
         }
     }
 }
