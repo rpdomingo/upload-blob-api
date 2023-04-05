@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using blobupload.api.Models;
 using blobupload.api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace blobupload.api.Controllers
@@ -21,6 +22,7 @@ namespace blobupload.api.Controllers
 
         [HttpPost]
         [Route("upload")]
+        [AllowAnonymous]
         public async Task<IActionResult> Upload([FromForm] FileModels file)
         {
             try
