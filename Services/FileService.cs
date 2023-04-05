@@ -18,20 +18,11 @@ namespace blobupload.api.Services
 
         public async Task Upload(FileModels filemodel)
         {
-            try
-            {
-                 var containerInstance = _blobServiceClient.GetBlobContainerClient("samplefileupload");
+            var containerInstance = _blobServiceClient.GetBlobContainerClient("samplefileupload");
 
-                var blobInstance = containerInstance.GetBlobClient(filemodel.ImageFile.FileName);
+            var blobInstance = containerInstance.GetBlobClient(filemodel.ImageFile.FileName);
 
-                await blobInstance.UploadAsync(filemodel.ImageFile.OpenReadStream());
-            }
-            catch (System.Exception ex)
-            {
-                
-                throw ex;
-            }
-           
+            await blobInstance.UploadAsync(filemodel.ImageFile.OpenReadStream());
         }
     }
 }
