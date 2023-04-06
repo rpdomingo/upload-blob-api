@@ -13,10 +13,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(_ => {
     return new BlobServiceClient(builder.Configuration.GetConnectionString("AzureBlobStorage"));
 });
-builder.Services.AddScoped(_ => {
-    return new BlobServiceClient(new Uri("https://devuploadblobstorage.blob.core.windows.net"),
-        new DefaultAzureCredential());
-});
+// builder.Services.AddScoped(_ => {
+//     return new BlobServiceClient(new Uri("https://devuploadblobstorage.blob.core.windows.net"),
+//         new DefaultAzureCredential());
+// });
 
 builder.Services.AddScoped<IFileService, FileService>();
 
